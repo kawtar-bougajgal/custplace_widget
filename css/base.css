@@ -1,0 +1,66 @@
+/**
+ * =================================================================
+ * BASE / RESET — kaykhes ykon isolé mn CSS dial site dial client
+ * =================================================================
+ */
+#custplace-widget-root,
+#custplace-widget-root * {
+  box-sizing: border-box;
+  font-family: var(--cp-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+#custplace-widget-root button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+#custplace-widget-root input,
+#custplace-widget-root textarea {
+  font: inherit;
+  color: inherit;
+}
+
+#custplace-widget-root ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#custplace-widget-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#custplace-widget-root img,
+#custplace-widget-root svg {
+  display: block;
+}
+
+/* Scrollbar mzyana (Chrome/Edge) */
+#custplace-widget-root *::-webkit-scrollbar {
+  width: 6px;
+}
+#custplace-widget-root *::-webkit-scrollbar-thumb {
+  background: var(--cp-border);
+  border-radius: var(--cp-radius-full);
+}
+
+/* Accessibilité — focus visible */
+#custplace-widget-root button:focus-visible,
+#custplace-widget-root input:focus-visible,
+#custplace-widget-root textarea:focus-visible {
+  outline: 2px solid var(--cp-primary);
+  outline-offset: 2px;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  #custplace-widget-root * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

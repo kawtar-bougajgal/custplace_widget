@@ -1,0 +1,75 @@
+/**
+ * =================================================================
+ * DESIGN TOKENS — Custplace Widget
+ * -----------------------------------------------------------------
+ * Hna kaynin GHIR les variables (couleurs, fonts, spacing, radius).
+ * Ila jatek Figma b des couleurs bdifferentes dial client mo3ayen,
+ * ghadi tbeddel GHIR had file (ola ghadi tzid override dynamique
+ * mn config.js — nchoufo hadchi mnbaad m3a dashboard).
+ * =================================================================
+ */
+:root {
+  /* --- Couleurs principales (CP Gradient — 3 stops, b nafss les
+         valeurs li kaynin f Figma "Colors" panel) --- */
+  --cp-gradient-1: rgba(27, 14, 60, 1);    /* dark purple (stop 0%) */
+  --cp-gradient-2: rgba(62, 92, 255, 1);   /* blue (stop 50%) */
+  --cp-gradient-3: rgba(239, 171, 255, 1); /* pink (stop 100%) */
+  --cp-gradient: linear-gradient(135deg, var(--cp-gradient-1) 0%, var(--cp-gradient-2) 50%, var(--cp-gradient-3) 100%);
+
+  --cp-primary: #3e5cff; /* dial CTA/texte li khass ykon "solid" (bla gradient) */
+  --cp-primary-dark: #2d46d1;
+
+  --cp-accent-star: #ffb400; /* couleur dial nojoum */
+  --cp-success: #16a34a; /* zr akhdar (Publiez votre avis) */
+  --cp-success-dark: #128a3e;
+
+  /* --- Neutres --- */
+  --cp-white: #ffffff;
+  --cp-bg-soft: #f6f7fb;
+  --cp-border: #e6e8f0;
+  --cp-text: #1a1a2e;
+  --cp-text-muted: #6b7280;
+  --cp-text-light: #9ca3af;
+
+  /* --- Typography --- */
+  --cp-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --cp-fs-xs: 11px;
+  --cp-fs-sm: 12.5px;
+  --cp-fs-base: 14px;
+  --cp-fs-md: 16px;
+  --cp-fs-lg: 20px;
+  --cp-fs-xl: 26px;
+
+  /* --- Spacing scale --- */
+  --cp-space-1: 4px;
+  --cp-space-2: 8px;
+  --cp-space-3: 12px;
+  --cp-space-4: 16px;
+  --cp-space-5: 20px;
+  --cp-space-6: 24px;
+
+  /* --- Radius --- */
+  --cp-radius-sm: 8px;
+  --cp-radius-md: 14px;
+  --cp-radius-lg: 20px;
+  --cp-radius-full: 999px;
+
+  /* --- Shadows ---
+     Figma "Drop shadow": X:0 Y:4 Blur:4 Spread:0.
+     La couleur exacte n'était pas visible dans le panel Figma —
+     mise ici en rgba(27,14,60,0.35) (basée sur le violet foncé du
+     gradient). Change --cp-shadow-badge si Figma donne une autre
+     couleur précise. */
+  --cp-shadow-badge: 0 4px 4px 0 rgba(27, 14, 60, 0.35);
+  --cp-shadow-panel: 0 20px 50px rgba(20, 20, 40, 0.2);
+
+  /* --- Z-index scale --- */
+  --cp-z-badge: 999998;
+  --cp-z-panel: 999999;
+
+  /* --- Transitions --- */
+  --cp-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --cp-transition-fast: 0.18s var(--cp-ease);
+  --cp-transition-base: 0.25s var(--cp-ease);
+}

@@ -1,0 +1,311 @@
+/**
+ * =================================================================
+ * WIDGET SHELL — Badge (collapsed) + Panel (container) + Header + Nav
+ * =================================================================
+ */
+
+/* -----------------------------------------------------------------
+ * BADGE — collapsed = dourra sghira. Hover = pill kbira (257px)
+ * kat-expand l LYSSAR (l lyamin fixe hit `right:20px` ma kaتbdlch).
+ *
+ * Bnya: <button class="cp-badge">
+ *          <span class="cp-badge__text">...</span>  ← mkhbi f collapsed
+ *          <span class="cp-badge__circle">...</span> ← dima bayn, f lyamin
+ *       </button>
+ * `justify-content: flex-end` kaykhelli l icône (circle) dima
+ * mrekza fi lyamin, o l text kayban ghi mnin l width kayzid.
+ * --------------------------------------------------------------- */
+.cp-badge {
+  position: fixed;
+  bottom: var(--cp-space-5);
+  right: var(--cp-space-5);
+  z-index: var(--cp-z-badge);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 10px;
+
+  width: 62px;
+  height: 62px;
+  border-radius: var(--cp-radius-full);
+  background: rgba(62, 92, 255, 1);
+  box-shadow: var(--cp-shadow-badge);
+  overflow: hidden;
+
+  transition: width 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cp-badge:hover,
+.cp-badge:focus-visible {
+  width: 257px;
+  background: rgba(62, 92, 255, 1);
+  box-shadow: 0px 4px 4px 0px rgba(231, 13, 35, 0.06);
+}
+
+.cp-badge.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+
+/* --- Text — 2 sطور: score kbir (bold) + count sghir taht.
+   Mkhbi f collapsed, kayban b fade-in f hover --- */
+.cp-badge__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--cp-white);
+  opacity: 0;
+  line-height: 1.15;
+  transition: opacity 0.25s ease;
+}
+
+.cp-badge:hover .cp-badge__text,
+.cp-badge:focus-visible .cp-badge__text {
+  opacity: 1;
+}
+
+.cp-badge__text-score {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.cp-badge__text-star {
+  color: var(--cp-accent-star);
+  font-size: 16px;
+  margin-left: 3px;
+}
+
+.cp-badge__text-count {
+  font-size: 11.5px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* --- Circle — dourra byda b nejma gradient, dima f lyssar --- */
+.cp-badge__circle {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--cp-white);
+  padding: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-badge__circle svg {
+  width: 30px;
+  height: 29px;
+}
+
+
+/* -----------------------------------------------------------------
+ * PANEL — l window kbira fin kayn les tabs
+ * --------------------------------------------------------------- */
+.cp-panel {
+  position: fixed;
+  bottom: var(--cp-space-5);
+  right: var(--cp-space-5);
+  z-index: var(--cp-z-panel);
+
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  height: min(640px, 82vh);
+
+  background: var(--cp-white);
+  border-radius: var(--cp-radius-lg);
+  box-shadow: var(--cp-shadow-panel);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  pointer-events: none;
+  transition: opacity var(--cp-transition-base), transform var(--cp-transition-base);
+}
+
+.cp-panel.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* -----------------------------------------------------------------
+ * HEADER — logo + score + Bonjour
+ * --------------------------------------------------------------- */
+.cp-header {
+  flex-shrink: 0;
+  padding: var(--cp-space-5);
+  background: var(--cp-gradient);
+  color: var(--cp-white);
+  position: relative;
+}
+
+.cp-header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--cp-space-4);
+}
+
+.cp-header__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--cp-radius-sm);
+  background: var(--cp-white);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cp-header__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cp-header__score {
+  text-align: right;
+}
+
+.cp-header__score-value {
+  font-size: var(--cp-fs-lg);
+  font-weight: 800;
+}
+
+.cp-header__score-value span {
+  color: var(--cp-accent-star);
+  font-size: var(--cp-fs-base);
+  margin-left: 4px;
+}
+
+.cp-header__score-count {
+  font-size: var(--cp-fs-xs);
+  opacity: 0.85;
+}
+
+.cp-header__title {
+  font-size: var(--cp-fs-lg);
+  font-weight: 800;
+  margin: 0 0 4px;
+}
+
+.cp-header__subtitle {
+  font-size: var(--cp-fs-sm);
+  opacity: 0.9;
+  margin: 0;
+}
+
+.cp-header__close {
+  position: absolute;
+  top: var(--cp-space-4);
+  right: var(--cp-space-4);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--cp-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--cp-transition-fast);
+}
+
+.cp-header__close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* -----------------------------------------------------------------
+ * BODY — zone fin kayban le contenu dial kol tab (scrollable)
+ * --------------------------------------------------------------- */
+.cp-body {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--cp-bg-soft);
+}
+
+/* -----------------------------------------------------------------
+ * BOTTOM NAV — Accueil / Avis clients / Agentplace / Publier un avis
+ * --------------------------------------------------------------- */
+.cp-nav {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--cp-border);
+  background: var(--cp-white);
+}
+
+.cp-nav__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--cp-space-3) var(--cp-space-1);
+  color: var(--cp-text-light);
+  transition: color var(--cp-transition-fast);
+}
+
+.cp-nav__item svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cp-nav__item span {
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.cp-nav__item.is-active {
+  color: var(--cp-primary);
+}
+
+.cp-nav__item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cp-nav__badge {
+  position: absolute;
+  top: 2px;
+  right: calc(50% - 22px);
+  background: var(--cp-primary);
+  color: var(--cp-white);
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: var(--cp-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+/* -----------------------------------------------------------------
+ * RESPONSIVE — mobile: panel kaywali bottom-sheet fullwidth
+ * --------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .cp-panel {
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 88vh;
+    border-radius: var(--cp-radius-lg) var(--cp-radius-lg) 0 0;
+  }
+
+  .cp-badge {
+    bottom: var(--cp-space-4);
+    right: var(--cp-space-4);
+  }
+}

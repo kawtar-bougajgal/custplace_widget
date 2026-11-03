@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 👉 FIX: kant kayn horizontal scrollbar f SAFHA KAMLA (html/body),
+   li kan kaydfa3 l widget (fixed) l lwra mn l viewport — l Close icon
+   kan mawjoud fach mghatti, kayban ghi mnin scrollina l lisar.
+   overflow-x hidden hna kayمنع l page mn ay scroll o9i b7al hadi. */
+html,
+body {
+  overflow-x: hidden;
+}
+
+#root {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Scrollbar mkhbi — kayst3ml f ReviewPanel body + n7o des tabs */
+.cp-scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.cp-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}

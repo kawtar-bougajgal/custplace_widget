@@ -1,0 +1,48 @@
+/**
+ * =================================================================
+ * ANIMATIONS — micro-interactions
+ * =================================================================
+ */
+
+/* Fade + slide li kaydakhel biha kol tab mnin tbeddel */
+@keyframes cp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cp-tab-enter {
+  animation: cp-fade-in 0.22s var(--cp-ease);
+}
+
+/* Spinner li kaydour f loading state */
+@keyframes cp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cp-spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--cp-border);
+  border-top-color: var(--cp-primary);
+  border-radius: 50%;
+  animation: cp-spin 0.7s linear infinite;
+  margin: 0 auto var(--cp-space-3);
+}
+
+/* Pulse dial nav badge (24) */
+@keyframes cp-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.cp-nav__badge.is-new {
+  animation: cp-pulse 1.6s ease-in-out infinite;
+}
